@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  app:
+    image: openjdk:17
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build/libs/settlementProgram-0.0.1-SNAPSHOT.jar:/app.jar
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/shop
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: manager
+      SPRING_PROFILES_ACTIVE: docker  # 여기에서 docker 프로파일 활성화
+    command: ["java", "-jar", "/app.jar"]
+    depends_on:
+      db:
+        condition: service_healthy  # db 서비스의 healthcheck 통과 여부를 확인함
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: manager
+      MYSQL_DATABASE: shop
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]  # MySQL이 준비됐는지 확인
+      interval: 10s  # healthcheck 실행 간격
+      timeout: 5s    # 응답을 기다리는 시간
+      retries: 5     # 재시도 횟수
+      start_period: 30s  # 컨테이너 시작 후 처음 healthcheck까지 대기하는 시간
+
+volumes:
+  db-data:

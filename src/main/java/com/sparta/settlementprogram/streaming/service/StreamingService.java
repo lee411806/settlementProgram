@@ -86,7 +86,7 @@ public class StreamingService {
             newHistory.setUser(user);  // User 객체 설정
             newHistory.setVideo(video);  // Videos 객체 설정
             newHistory.setCurrentPosition(0);  // 처음 재생이므로 0초로 설정
-            newHistory.setLastPlayedDate(LocalDateTime.now()); // 현재 시각 저장
+            newHistory.setLastPlayedDate(LocalDateTime.now()); // 현재 날짜 저장
             newHistory.setVideoViewCount(
                     newHistory.getVideoViewCount() == null ? 1L : newHistory.getVideoViewCount() + 1L
             );

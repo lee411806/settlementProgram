@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,6 +33,7 @@ public class VideoViewHistory extends Timestamped {
     private Long adViewCount;  // 광고 시청 횟수
 
     private LocalDateTime lastPlayedDate;
+    private LocalDate playedDate;
 
     private Integer currentPosition;
 

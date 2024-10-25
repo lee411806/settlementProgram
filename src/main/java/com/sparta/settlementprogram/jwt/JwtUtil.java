@@ -19,10 +19,16 @@ import java.util.Date;
 @Component
 public class JwtUtil {
     // Header KEY 값
+    //헤더 종류들 중에서 Authorization헤더는 헤더가 암호화 되어서 보안적인 장점이 있다.(CSRF공격에 덜취약)
+    //상태를 유지 하지 않는 토큰기반, 인증정보를 url과 분리해서 보낼 수 있음(인증을 url에 넣지 않음)
+    //getJwtFromHeader 여기에서 사용
     public static final String AUTHORIZATION_HEADER = "Authorization";
     // 사용자 권한 값의 KEY
+    // 내가 사용자별 권한을 나눠줬는데 이 권한을 jwt에 포함시키고 싶으면 넣는다.
+    //사용자 권한을 JWT 토큰에 넣어주면, 서버는 해당 JWT를 통해 사용자의 권한을 식별할 수 있어. 이렇게 하면,
+    // 서버는 각 요청마다 JWT를 검증하고,토큰에 포함된 권한 정보를 기반으로 사용자가 어떤 작업을 할 수 있는지 판단
     public static final String AUTHORIZATION_KEY = "auth";
-    // Token 식별자
+    // Token 식별자(서버에서 인증한 토큰이라는 걸 명시)
     public static final String BEARER_PREFIX = "Bearer ";
     // 토큰 만료시간
     private final long TOKEN_TIME = 60 * 60 * 1000L; // 60분
@@ -64,6 +70,7 @@ public class JwtUtil {
     // 토큰 검증
     public boolean validateToken(String token) {
         try {
+            //시크릿 키로 토큰 검증
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (SecurityException | MalformedJwtException e) {
@@ -79,6 +86,7 @@ public class JwtUtil {
     }
 
     // 토큰에서 사용자 정보 가져오기
+    //메서드를 통해서 사용자를 비즈니스 로직으로 가져옴
     public Claims getUserInfoFromToken(String token) {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
     }

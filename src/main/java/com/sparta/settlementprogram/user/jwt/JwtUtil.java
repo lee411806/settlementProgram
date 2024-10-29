@@ -1,8 +1,8 @@
-package com.sparta.settlementprogram.jwt;
+package com.sparta.settlementprogram.user.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import com.sparta.settlementprogram.entity.UserRoleEnum;
+import com.sparta.settlementprogram.user.entity.UserRoleEnum;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.security.Key;
-import java.security.SignatureException;
 import java.util.Base64;
 import java.util.Date;
 

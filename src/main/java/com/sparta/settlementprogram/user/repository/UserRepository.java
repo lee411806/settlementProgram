@@ -1,7 +1,7 @@
-package com.sparta.settlementprogram.repository;
+package com.sparta.settlementprogram.user.repository;
 
 
-import com.sparta.settlementprogram.entity.User;
+import com.sparta.settlementprogram.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

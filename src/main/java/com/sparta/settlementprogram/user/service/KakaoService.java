@@ -1,14 +1,14 @@
-package com.sparta.settlementprogram.service;
+package com.sparta.settlementprogram.user.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.sparta.settlementprogram.dto.KakaoUserInfoDto;
-import com.sparta.settlementprogram.entity.User;
-import com.sparta.settlementprogram.entity.UserRoleEnum;
-import com.sparta.settlementprogram.jwt.JwtUtil;
-import com.sparta.settlementprogram.repository.UserRepository;
+import com.sparta.settlementprogram.user.dto.KakaoUserInfoDto;
+import com.sparta.settlementprogram.user.entity.User;
+import com.sparta.settlementprogram.user.entity.UserRoleEnum;
+import com.sparta.settlementprogram.user.jwt.JwtUtil;
+import com.sparta.settlementprogram.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;

@@ -1,10 +1,10 @@
-package com.sparta.settlementprogram.service;
+package com.sparta.settlementprogram.user.service;
 
 
-import com.sparta.settlementprogram.dto.SignupRequestDto;
-import com.sparta.settlementprogram.entity.User;
-import com.sparta.settlementprogram.entity.UserRoleEnum;
-import com.sparta.settlementprogram.repository.UserRepository;
+import com.sparta.settlementprogram.user.dto.SignupRequestDto;
+import com.sparta.settlementprogram.user.entity.User;
+import com.sparta.settlementprogram.user.entity.UserRoleEnum;
+import com.sparta.settlementprogram.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

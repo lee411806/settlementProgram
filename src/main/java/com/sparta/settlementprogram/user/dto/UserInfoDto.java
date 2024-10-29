@@ -1,4 +1,4 @@
-package com.sparta.settlementprogram.dto;
+package com.sparta.settlementprogram.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

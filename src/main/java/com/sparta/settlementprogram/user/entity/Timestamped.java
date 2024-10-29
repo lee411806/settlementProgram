@@ -1,4 +1,4 @@
-package com.sparta.settlementprogram.entity;
+package com.sparta.settlementprogram.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

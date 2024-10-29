@@ -1,7 +1,7 @@
-package com.sparta.settlementprogram.security;
+package com.sparta.settlementprogram.user.security;
 
 
-import com.sparta.settlementprogram.jwt.JwtUtil;
+import com.sparta.settlementprogram.user.jwt.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

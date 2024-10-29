@@ -1,4 +1,4 @@
-package com.sparta.settlementprogram.config;
+package com.sparta.settlementprogram.user.config;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

@@ -1,10 +1,10 @@
-package com.sparta.settlementprogram.config;
+package com.sparta.settlementprogram.user.config;
 
 
-import com.sparta.settlementprogram.jwt.JwtUtil;
-import com.sparta.settlementprogram.security.JwtAuthenticationFilter;
-import com.sparta.settlementprogram.security.JwtAuthorizationFilter;
-import com.sparta.settlementprogram.security.UserDetailsServiceImpl;
+import com.sparta.settlementprogram.user.jwt.JwtUtil;
+import com.sparta.settlementprogram.user.security.JwtAuthenticationFilter;
+import com.sparta.settlementprogram.user.security.JwtAuthorizationFilter;
+import com.sparta.settlementprogram.user.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;

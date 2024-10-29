@@ -17,7 +17,7 @@ public class ReviewCountAuthentication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private Long userId;
     private String jwtToken;
     private String ipAddress;
     private Integer lastActionTime;

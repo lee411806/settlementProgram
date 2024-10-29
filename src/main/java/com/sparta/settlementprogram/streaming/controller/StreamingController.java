@@ -2,7 +2,6 @@ package com.sparta.settlementprogram.streaming.controller;
 
 import com.sparta.settlementprogram.streaming.dto.AdviewcountRequestDto;
 import com.sparta.settlementprogram.streaming.service.StreamingService;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,10 @@ public class StreamingController {
     }
 
     @GetMapping("/users/{userId}/videos/{videoId}/pause")
-    public void pause(@PathVariable Long userId, @PathVariable Long videoId,@RequestParam int currentPosition) {
+    public void pause(@PathVariable Long userId,
+                      @PathVariable Long videoId,
+                      @RequestParam int currentPosition,
+                      @RequestParam  HttpServletRequest httpServletRequest ) {
 
             streamingService.pause(userId,videoId,currentPosition);
 

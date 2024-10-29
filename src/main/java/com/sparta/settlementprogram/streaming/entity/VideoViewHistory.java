@@ -1,7 +1,7 @@
 package com.sparta.settlementprogram.streaming.entity;
 
-import com.sparta.settlementprogram.entity.Timestamped;
-import com.sparta.settlementprogram.entity.User;
+import com.sparta.settlementprogram.user.entity.Timestamped;
+import com.sparta.settlementprogram.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

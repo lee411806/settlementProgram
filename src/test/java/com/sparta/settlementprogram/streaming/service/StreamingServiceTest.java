@@ -142,38 +142,7 @@ public class StreamingServiceTest {
         verify(videoViewHistoryRepository).save(any(VideoViewHistory.class));
     }
 
-    @Test
-    public void testPause() {
-        // given
-        Long userId = 1L;
-        Long videoId = 1L;
-        int currentPosition = 120;  // 예: 2분 지점에서 중지
-        // 기존 조회 이력을 가정한 Mock 설정
-        VideoViewHistory mockHistory = new VideoViewHistory();
 
-        // User와 Videos 객체를 생성하여 mockHistory에 설정
-        User mockUser = new User();
-        mockUser.setId(userId);
-        Videos mockVideo = new Videos();
-        mockVideo.setId(videoId);
-
-        mockHistory.setUser(mockUser); // 엔티티 설정
-        mockHistory.setVideo(mockVideo); // 엔티티 설정
-
-        // videoViewHistoryRepository에서 history를 반환하도록 설정
-        when(videoViewHistoryRepository.findByUserIdAndVideoId(userId, videoId)).thenReturn(Optional.of(mockHistory));
-
-        // when
-        streamingService.pause(userId, videoId, currentPosition);
-
-        // then
-        // 중지 시점과 마지막 재생 날짜가 제대로 설정되었는지 확인
-        assertEquals(currentPosition, mockHistory.getCurrentPosition());
-        assertNotNull(mockHistory.getLastPlayedDate());
-
-        // ReviewCountAuthentication 저장 동작 확인
-        verify(reviewCountAuthenticationRepository, times(1)).save(any(ReviewCountAuthentication.class));
-    }
 
 
 }

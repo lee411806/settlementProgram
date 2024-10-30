@@ -31,6 +31,8 @@ public class DailyVideoView {
     @Column(name = "adview_count")
     private Long adViewCount = 0L; // 날짜별 광고 시청 횟수 초기값 0으로 설정
 
+    @Column(name="playtime")
+    private Long playTime = 0L;
 
     public DailyVideoView(Videos video, LocalDate today) {
         this.video = video;
@@ -45,5 +47,9 @@ public class DailyVideoView {
 
     public void incrementAdViewCount() {
         this.adViewCount += 1;
+    }
+
+    public void increasePlaytime(int currentposition) {
+        this.playTime += currentposition;
     }
 }

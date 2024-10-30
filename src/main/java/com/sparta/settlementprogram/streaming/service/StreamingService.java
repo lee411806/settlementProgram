@@ -144,7 +144,7 @@ public class StreamingService {
 
     //정지 메서드
     public void pause(Long userId, Long videoId, int currentPosition, HttpServletRequest httpServletRequest) {
-
+        //비디오 중지 시점 저장
         VideoViewHistory history = videoViewHistoryRepository.findByUserIdAndVideoId(userId, videoId)
                 .orElseThrow(() -> new EntityNotFoundException("No history found for this user and video"));
 
@@ -156,6 +156,16 @@ public class StreamingService {
         String ipAddress = getClientIp(httpServletRequest);
 
 
+        //비디오 총 재생시간 증가
+        Videos video = videoRepository.findById(videoId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 비디오입니다."));
+        LocalDate today = LocalDate.now();
+        DailyVideoView dailyVideoView = dailyVideoViewRepository.findByVideoAndDate(video, today)
+                .orElseThrow(() -> new IllegalStateException("시간, 비디오 총 재생 시간 테이블이 없습니다. Video ID: " + videoId + ", Date: " + today));
+
+        // 조회수 증가 로직
+        dailyVideoView.increasePlaytime(currentPosition);
+        dailyVideoViewRepository.save(dailyVideoView);
 
         // 어뷰징 방지로 현재 중지 시점 리뷰조회수인증 엔티티에 저장
         // ip는 HttpServletRequest로 , 인증키는 Jwt 토큰에서 받을 수 있음
